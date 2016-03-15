@@ -1,0 +1,140 @@
+package com.fp.example;
+
+import org.testng.annotations.Test;
+
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import java.net.MalformedURLException;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.By.ByClassName;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.android.AndroidDriver;
+import org.openqa.selenium.io.*;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.thoughtworks.selenium.Wait;
+
+import static org.testng.Assert.assertEquals;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+
+@Test
+public class Total_Price_Check {
+	
+	testingapp tpa = new testingapp();
+	public void Price_Check1() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception,NumberFormatException {
+		
+		tpa.testapp();
+		tpa.Search_Input();
+		tpa.Search_Date_Input();
+		tpa.Listing_Page();
+		Price_Check prc =	tpa.Price_Page();
+		
+		File excelFile = new File("C:\\Test_Data.xls");
+		Workbook existingBook = Workbook.getWorkbook(excelFile);
+		WritableWorkbook book = Workbook.createWorkbook(excelFile, existingBook);
+		WritableSheet sheet = book.getSheet("Sheet1");
+						
+		Label l1 = new Label(2, 1, prc.getBase_Price());
+		sheet.addCell(l1);
+		Label l2 = new Label(3, 1, prc.getTaxes());
+		sheet.addCell(l2);
+		Label l3 = new Label(4, 1, prc.getProtection());
+		sheet.addCell(l3);
+		Label l4 = new Label(5, 1, prc.getInstant_Discount());
+		sheet.addCell(l4);
+		Label l5 = new Label(6, 1, prc.getTotal_Price());
+		sheet.addCell(l5);
+				
+		float BP = tpa.floatRoundOff(Float.parseFloat(prc.getBase_Price()));
+		float Taxes = tpa.floatRoundOff(Float.parseFloat(prc.getTaxes()));
+		float Protection = tpa.floatRoundOff(Float.parseFloat(prc.getProtection()));
+		float Instant_Discount = tpa.floatRoundOff(Float.parseFloat(prc.getInstant_Discount()));
+		float Total_Price = tpa.floatRoundOff(Float.parseFloat(prc.getTotal_Price()));
+			  
+		
+		System.out.println(BP);
+		System.out.println(Taxes);
+		System.out.println(Protection);
+		System.out.println(Instant_Discount);
+		System.out.println(Total_Price);
+		System.out.println((BP + Taxes + Protection - Instant_Discount));
+		
+		
+		
+
+		if (tpa.floatRoundOff((BP + Taxes + Protection - Instant_Discount)) == Total_Price){
+		
+		System.out.println("Pass");
+	
+		Label l6 = new Label(7, 1, "Pass");
+		sheet.addCell(l6);
+		
+		}
+		
+		else{	
+			System.out.println("Fail");	
+			
+			Label l6 = new Label(7, 1, "Fail");
+			sheet.addCell(l6);
+		
+		}
+		
+		Price_Check prc1 =	tpa.Travel_Assist_Value_Check();
+		
+		float Taxes_With_Assist = tpa.floatRoundOff(Float.parseFloat(prc1.getTaxes_With_Assist()));
+		
+		System.out.println(prc1.getTravel_Assist_Text_Value());
+		System.out.println(tpa.floatRoundOff(Taxes_With_Assist - Taxes));
+
+		
+		if ((prc1.getTravel_Assist_Text_Value()).equals("($14.95)") &&   (tpa.floatRoundOff(Taxes_With_Assist - Taxes) ==(float) 14.95)){
+			
+			System.out.println("Pass");
+		
+			Label l7 = new Label(8, 1, "Pass");
+			sheet.addCell(l7);
+			
+			}
+			
+			else{	
+				System.out.println("Fail");	
+				
+				Label l7 = new Label(8, 1, "Fail");
+				sheet.addCell(l7);
+			
+			}
+		
+	
+		
+		book.write();
+		book.close();
+			
+	}
+	
+	
+
+}

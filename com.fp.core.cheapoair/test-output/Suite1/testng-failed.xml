@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite1]">
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+    <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+  </listeners>
+  <test name="Regression1(failed)">
+    <classes>
+      <class name="com.fp.core.cheapoair.Add_CoTraveler">
+        <methods>
+          <include name="Instance_Close"/>
+          <include name="Login"/>
+        </methods>
+      </class> <!-- com.fp.core.cheapoair.Add_CoTraveler -->
+      <class name="com.fp.core.cheapoair.Delete_CoTraveler">
+        <methods>
+          <include name="Del_Cotraveler"/>
+          <include name="Instance_Close"/>
+        </methods>
+      </class> <!-- com.fp.core.cheapoair.Delete_CoTraveler -->
+    </classes>
+  </test> <!-- Regression1(failed) -->
+</suite> <!-- Failed suite [Suite1] -->

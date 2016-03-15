@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Regression1"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="123.898">
+  <properties />
+  
+  
+            <testcase name="Check_Booking" time="123.898" classname="com.fp.core.cheapoair.Check_My_Booking" />
+      
+</testsuite>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite1]">
+  <test name="Regression1(failed)">
+    <classes>
+      <class name="com.fp.example.Check_My_Booking">
+        <methods>
+          <include name="Booking_Check"/>
+          <include name="Instance_Close"/>
+        </methods>
+      </class> <!-- com.fp.example.Check_My_Booking -->
+      <class name="com.fp.example.Total_Price_Check">
+        <methods>
+          <include name="Instance_Close"/>
+        </methods>
+      </class> <!-- com.fp.example.Total_Price_Check -->
+      <class name="com.fp.example.Round_Trip">
+        <methods>
+          <include name="Instance_Close"/>
+          <include name="Round_Trip_Script"/>
+        </methods>
+      </class> <!-- com.fp.example.Round_Trip -->
+      <class name="com.fp.example.Promo_Code_Verification">
+        <methods>
+          <include name="Promo_Calculation"/>
+          <include name="Instance_Close"/>
+        </methods>
+      </class> <!-- com.fp.example.Promo_Code_Verification -->
+    </classes>
+  </test> <!-- Regression1(failed) -->
+</suite> <!-- Failed suite [Suite1] -->

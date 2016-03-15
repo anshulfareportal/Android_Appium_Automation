@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Sign_In_Variables.java&apos; to &apos;com.fp.core.cheapoair/src/com.fp.core.cheapoair&apos;&#x0D;&#x0A;- Original project: &apos;com.fp.core.cheapoair&apos;&#x0D;&#x0A;- Destination element: &apos;com.fp.core.cheapoair/src/com.fp.core.cheapoair&apos;&#x0D;&#x0A;- Original element: &apos;com.fp.core.cheapoair.Sign_In_Variables.java&apos;" description="Copy compilation unit" destination="/src&lt;com.fp.core.cheapoair" element1="/src&lt;com.fp.core.cheapoair{Sign_In_Variables.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1455005820376" units="1" version="1.0"/>
+</session>

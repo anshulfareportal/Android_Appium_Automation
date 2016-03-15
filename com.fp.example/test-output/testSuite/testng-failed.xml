@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="2" verbose="10" name="Failed suite [testSuite]" parallel="tests">
+  <test name="MytestCase(failed)" parallel="tests">
+    <classes>
+      <class name="com.fp.example.Total_Price_Check">
+        <methods>
+          <include name="Instance_Close"/>
+          <include name="Price_Check1"/>
+        </methods>
+      </class> <!-- com.fp.example.Total_Price_Check -->
+      <class name="com.fp.example.Check_My_Booking">
+        <methods>
+          <include name="Booking_Check"/>
+          <include name="Instance_Close"/>
+        </methods>
+      </class> <!-- com.fp.example.Check_My_Booking -->
+      <class name="com.fp.example.Promo_Code_Verification">
+        <methods>
+          <include name="Promo_Calculation"/>
+          <include name="Instance_Close"/>
+        </methods>
+      </class> <!-- com.fp.example.Promo_Code_Verification -->
+      <class name="com.fp.example.Round_Trip">
+        <methods>
+          <include name="Instance_Close"/>
+          <include name="Round_Trip_Script"/>
+        </methods>
+      </class> <!-- com.fp.example.Round_Trip -->
+    </classes>
+  </test> <!-- MytestCase(failed) -->
+</suite> <!-- Failed suite [testSuite] -->

@@ -1,0 +1,294 @@
+<html>
+<head>
+<title>TestNG:  Regression1</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Regression1</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>1/3/0</td>
+</tr><tr>
+<td>Started on:</td><td>Fri Jun 05 20:41:44 IST 2015</td>
+</tr>
+<tr><td>Total time:</td><td>268 seconds (268322 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.fp.example.Check_My_Booking.Booking_Check()'><b>Booking_Check</b><br>Test class: com.fp.example.Check_My_Booking</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 120.38 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.45.0&apos;, revision: &apos;32a636c&apos;, time: &apos;2015-03-05 22:01:35&apos;
+System info: host: &apos;INAGFFPTEC098W&apos;, ip: &apos;172.20.16.120&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.6.0_31&apos;
+*** Element info: {Using=name, value=My Bookings}
+Session ID: e1c84ead-6342-4dd4-aec1-8df8204cca65
+Driver info: io.appium.java_client.AppiumDriver
+Capabilities [{platform=LINUX, app=C:\Appium\CheapoAir_AirHotel_3.0.15.apk, javascriptEnabled=true, appActivity=com.fp.cheapoair.Cheapoair, browserName=, networkConnectionEnabled=true, apppackage=com.fp.cheapoair, desired={platformVersion=5.1, app=C:\Appium\CheapoAir_AirHotel_3.0.15.apk, deviceName=motorola-nexus_6-ZX1G428LBP, platformName=Android, browserName=, appActivity=com.fp.cheapoair.Cheapoair, apppackage=com.fp.cheapoair}, locationContextEnabled=false, platformVersion=5.1, databaseEnabled=false, deviceName=ZX1G428LBP, platformName=Android, webStorageEnabled=false, warnings={}, takesScreenshot=true}]
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:88)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByName(RemoteWebDriver.java:425)
+	at org.openqa.selenium.By$ByName.findElement(By.java:299)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at com.fp.example.testingapp.Check_My_booking(testingapp.java:653)
+	at com.fp.example.Check_My_Booking.Booking_Check(Check_My_Booking.java:56)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace3682584", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace3682584'><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 120.38 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.45.0&apos;, revision: &apos;32a636c&apos;, time: &apos;2015-03-05 22:01:35&apos;
+System info: host: &apos;INAGFFPTEC098W&apos;, ip: &apos;172.20.16.120&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.6.0_31&apos;
+*** Element info: {Using=name, value=My Bookings}
+Session ID: e1c84ead-6342-4dd4-aec1-8df8204cca65
+Driver info: io.appium.java_client.AppiumDriver
+Capabilities [{platform=LINUX, app=C:\Appium\CheapoAir_AirHotel_3.0.15.apk, javascriptEnabled=true, appActivity=com.fp.cheapoair.Cheapoair, browserName=, networkConnectionEnabled=true, apppackage=com.fp.cheapoair, desired={platformVersion=5.1, app=C:\Appium\CheapoAir_AirHotel_3.0.15.apk, deviceName=motorola-nexus_6-ZX1G428LBP, platformName=Android, browserName=, appActivity=com.fp.cheapoair.Cheapoair, apppackage=com.fp.cheapoair}, locationContextEnabled=false, platformVersion=5.1, databaseEnabled=false, deviceName=ZX1G428LBP, platformName=Android, webStorageEnabled=false, warnings={}, takesScreenshot=true}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:88)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElementByName(RemoteWebDriver.java:425)
+	at org.openqa.selenium.By$ByName.findElement(By.java:299)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+	at com.fp.example.testingapp.Check_My_booking(testingapp.java:653)
+	at com.fp.example.Check_My_Booking.Booking_Check(Check_My_Booking.java:56)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>120</td>
+<td>com.fp.example.Check_My_Booking@c2b2f6</td></tr>
+<tr>
+<td title='com.fp.example.Promo_Code_Verification.Promo_Calculation()'><b>Promo_Calculation</b><br>Test class: com.fp.example.Promo_Code_Verification</td>
+<td><div><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 25.32 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.45.0&apos;, revision: &apos;32a636c&apos;, time: &apos;2015-03-05 22:01:35&apos;
+System info: host: &apos;INAGFFPTEC098W&apos;, ip: &apos;172.20.16.120&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.6.0_31&apos;
+Session ID: e1c84ead-6342-4dd4-aec1-8df8204cca65
+Driver info: io.appium.java_client.AppiumDriver
+Capabilities [{platform=LINUX, app=C:\Appium\CheapoAir_AirHotel_3.0.15.apk, javascriptEnabled=true, appActivity=com.fp.cheapoair.Cheapoair, browserName=, networkConnectionEnabled=true, apppackage=com.fp.cheapoair, desired={platformVersion=5.1, app=C:\Appium\CheapoAir_AirHotel_3.0.15.apk, deviceName=motorola-nexus_6-ZX1G428LBP, platformName=Android, browserName=, appActivity=com.fp.cheapoair.Cheapoair, apppackage=com.fp.cheapoair}, locationContextEnabled=false, platformVersion=5.1, databaseEnabled=false, deviceName=ZX1G428LBP, platformName=Android, webStorageEnabled=false, warnings={}, takesScreenshot=true}]
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:88)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:268)
+	at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:89)
+	at com.fp.example.testingapp.Listing_Page(testingapp.java:201)
+	at com.fp.example.Promo_Code_Verification.Promo_Calculation(Promo_Code_Verification.java:59)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace29705835", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace29705835'><pre>org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 25.32 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.45.0&apos;, revision: &apos;32a636c&apos;, time: &apos;2015-03-05 22:01:35&apos;
+System info: host: &apos;INAGFFPTEC098W&apos;, ip: &apos;172.20.16.120&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.6.0_31&apos;
+Session ID: e1c84ead-6342-4dd4-aec1-8df8204cca65
+Driver info: io.appium.java_client.AppiumDriver
+Capabilities [{platform=LINUX, app=C:\Appium\CheapoAir_AirHotel_3.0.15.apk, javascriptEnabled=true, appActivity=com.fp.cheapoair.Cheapoair, browserName=, networkConnectionEnabled=true, apppackage=com.fp.cheapoair, desired={platformVersion=5.1, app=C:\Appium\CheapoAir_AirHotel_3.0.15.apk, deviceName=motorola-nexus_6-ZX1G428LBP, platformName=Android, browserName=, appActivity=com.fp.cheapoair.Cheapoair, apppackage=com.fp.cheapoair}, locationContextEnabled=false, platformVersion=5.1, databaseEnabled=false, deviceName=ZX1G428LBP, platformName=Android, webStorageEnabled=false, warnings={}, takesScreenshot=true}]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:88)
+	at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:268)
+	at org.openqa.selenium.remote.RemoteWebElement.sendKeys(RemoteWebElement.java:89)
+	at com.fp.example.testingapp.Listing_Page(testingapp.java:201)
+	at com.fp.example.Promo_Code_Verification.Promo_Calculation(Promo_Code_Verification.java:59)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>71</td>
+<td>com.fp.example.Promo_Code_Verification@1abcc03</td></tr>
+<tr>
+<td title='com.fp.example.Round_Trip.Round_Trip_Script()'><b>Round_Trip_Script</b><br>Test class: com.fp.example.Round_Trip</td>
+<td><div><pre>org.openqa.selenium.SessionNotCreatedException: A new session could not be created. (Original error: Requested a new session but one was in progress) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 42 milliseconds
+Build info: version: &apos;2.45.0&apos;, revision: &apos;32a636c&apos;, time: &apos;2015-03-05 22:01:35&apos;
+System info: host: &apos;INAGFFPTEC098W&apos;, ip: &apos;172.20.16.120&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.6.0_31&apos;
+Driver info: io.appium.java_client.AppiumDriver
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:88)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:240)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:126)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:153)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:44)
+	at com.fp.example.testingapp.testapp(testingapp.java:85)
+	at com.fp.example.Round_Trip.Round_Trip_Script(Round_Trip.java:55)
+... Removed 28 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace14293164", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace14293164'><pre>org.openqa.selenium.SessionNotCreatedException: A new session could not be created. (Original error: Requested a new session but one was in progress) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 42 milliseconds
+Build info: version: &apos;2.45.0&apos;, revision: &apos;32a636c&apos;, time: &apos;2015-03-05 22:01:35&apos;
+System info: host: &apos;INAGFFPTEC098W&apos;, ip: &apos;172.20.16.120&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.6.0_31&apos;
+Driver info: io.appium.java_client.AppiumDriver
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+	at org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+	at io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:88)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:240)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:126)
+	at org.openqa.selenium.remote.RemoteWebDriver.&lt;init&gt;(RemoteWebDriver.java:153)
+	at io.appium.java_client.AppiumDriver.&lt;init&gt;(AppiumDriver.java:44)
+	at com.fp.example.testingapp.testapp(testingapp.java:85)
+	at com.fp.example.Round_Trip.Round_Trip_Script(Round_Trip.java:55)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:111)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:204)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:175)
+</pre></div></td>
+<td>0</td>
+<td>com.fp.example.Round_Trip@7736bd</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='com.fp.example.Total_Price_Check.Price_Check1()'><b>Price_Check1</b><br>Test class: com.fp.example.Total_Price_Check</td>
+<td></td>
+<td>76</td>
+<td>com.fp.example.Total_Price_Check@aadc97</td></tr>
+</table><p>
+</body>
+</html>

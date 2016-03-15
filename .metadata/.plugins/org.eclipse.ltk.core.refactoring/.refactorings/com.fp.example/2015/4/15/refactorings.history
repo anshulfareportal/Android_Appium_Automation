@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;com.fp.example/src/com/fp/example/excelrun&apos; to &apos;excelrun.java&apos;" description="Rename resource &apos;excelrun&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/com/fp/example/excelrun" name="excelrun.java" stamp="1428592035681" updateReferences="true"/>
+</session>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Regression1"
+           tests="1"
+           failures="0"
+           errors="0"
+           skipped="0"
+           time="441.211">
+  <properties />
+  
+  
+            <testcase name="One_Way_Script" time="441.211" classname="com.fp.core.cheapoair.One_Way" />
+      
+</testsuite>

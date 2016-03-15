@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Regression1"
+           tests="1"
+           failures="1"
+           errors="0"
+           skipped="0"
+           time="61.065">
+  <properties />
+            <testcase name="Del_Cotraveler" time="61.065" classname="com.fp.core.cheapoair.Delete_CoTraveler">
+                <failure type="org.openqa.selenium.NoSuchElementException"
+                  message="An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 60.66 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: &apos;2.42.2&apos;, revision: &apos;6a6995d&apos;, time: &apos;2014-06-03 17:42:30&apos;
+System info: host: &apos;INAGFFPTEC230W&apos;, ip: &apos;172.20.17.186&apos;, os.name: &apos;Windows 7&apos;, os.arch: &apos;x86&apos;, os.version: &apos;6.1&apos;, java.version: &apos;1.7.0_25&apos;
+Session ID: e90baa63-8c56-4479-8d22-1152d565893e
+Driver info: io.appium.java_client.AppiumDriver
+Capabilities [{platform=LINUX, app=D:\Appium_Automation\application-cheapoair-3.1.10.apk, javascriptEnabled=true, appActivity=com.fp.cheapoair.CheapOair, browserName=, networkConnectionEnabled=true, apppackage=com.fp.cheapoair, desired={platformVersion=5.0.1, app=D:\Appium_Automation\application-cheapoair-3.1.10.apk, deviceName=samsung-sm_n910g-641dd802, platformName=Android, browserName=, appActivity=com.fp.cheapoair.CheapOair, apppackage=com.fp.cheapoair}, locationContextEnabled=false, platformVersion=5.0.1, databaseEnabled=false, platformName=Android, deviceName=641dd802, webStorageEnabled=false, warnings={}, takesScreenshot=true}]"
+              >
+<![CDATA[org.openqa.selenium.NoSuchElementException: An element could not be located on the page using the given search parameters. (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 60.66 seconds
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.42.2', revision: '6a6995d', time: '2014-06-03 17:42:30'
+System info: host: 'INAGFFPTEC230W', ip: '172.20.17.186', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_25'
+Session ID: e90baa63-8c56-4479-8d22-1152d565893e
+Driver info: io.appium.java_client.AppiumDriver
+Capabilities [{platform=LINUX, app=D:\Appium_Automation\application-cheapoair-3.1.10.apk, javascriptEnabled=true, appActivity=com.fp.cheapoair.CheapOair, browserName=, networkConnectionEnabled=true, apppackage=com.fp.cheapoair, desired={platformVersion=5.0.1, app=D:\Appium_Automation\application-cheapoair-3.1.10.apk, deviceName=samsung-sm_n910g-641dd802, platformName=Android, browserName=, appActivity=com.fp.cheapoair.CheapOair, apppackage=com.fp.cheapoair}, locationContextEnabled=false, platformVersion=5.0.1, databaseEnabled=false, platformName=Android, deviceName=641dd802, webStorageEnabled=false, warnings={}, takesScreenshot=true}]
+  sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+  sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+  sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+  java.lang.reflect.Constructor.newInstance(Unknown Source)
+  org.openqa.selenium.remote.ErrorHandler.createThrowable(ErrorHandler.java:204)
+  org.openqa.selenium.remote.ErrorHandler.throwIfResponseFailed(ErrorHandler.java:156)
+  org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:599)
+  io.appium.java_client.AppiumDriver.execute(AppiumDriver.java:88)
+  org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:352)
+  org.openqa.selenium.remote.RemoteWebDriver.findElementByName(RemoteWebDriver.java:425)
+  org.openqa.selenium.By$ByName.findElement(By.java:299)
+  org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:344)
+  com.fp.core.cheapoair.Function_File.Del_Co_Travler(Function_File.java:832)
+  com.fp.core.cheapoair.Delete_CoTraveler.Del_Cotraveler(Delete_CoTraveler.java:95)
+  sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+  sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+  sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+  java.lang.reflect.Method.invoke(Unknown Source)
+  org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:85)
+  org.testng.internal.Invoker.invokeMethod(Invoker.java:639)
+  org.testng.internal.Invoker.invokeTestMethod(Invoker.java:816)
+  org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1124)
+  org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+  org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:108)
+  org.testng.TestRunner.privateRun(TestRunner.java:774)
+  org.testng.TestRunner.run(TestRunner.java:624)
+  org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+  org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+  org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+  org.testng.SuiteRunner.run(SuiteRunner.java:261)
+  org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+  org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+  org.testng.TestNG.runSuitesSequentially(TestNG.java:1191)
+  org.testng.TestNG.runSuitesLocally(TestNG.java:1116)
+  org.testng.TestNG.run(TestNG.java:1024)
+  org.testng.remote.RemoteTestNG.run(RemoteTestNG.java:112)
+  org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:205)
+  org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:176)
+]]>
+      </failure>
+
+          </testcase>
+  
+  
+  
+</testsuite>
