@@ -54,13 +54,13 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 @Test
 public class Car_Booking {
-	Workbook wb;
-	WritableWorkbook book;
-	WritableWorkbook book1;
+	
 	Function_File RT = Function_File.getInstance();
 
 	//Function_File RT = new Function_File();
-	
+	WebDriver dr = Function_File.WebDriver_Instance();
+	//WebDriver dr = RT.WebDriver_Instance();
+	Read_Write_Excel WR = new Read_Write_Excel();
 
 	/**
 	 * @param args
@@ -68,20 +68,10 @@ public class Car_Booking {
 	
 	public void Car_Script() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 		
+		WritableSheet excel_sheet[] = WR.Write_Excel_File("Car_Booking");
+		Sheet sh = WR. Read_Excel_File();
 		
-		
-	//common line for read and write in existing workbook
-		File File_Path = new File("C:\\Excel_File\\Car_Test_Data.xls");	
-		File File_Path1 = new File("C:\\Excel_File\\Daily_Sanity_Report_Android.xls");	
-		File New_File_Path = new File("C:\\Excel_File\\Car_Trip.xls");	
-		
-		//File New_File_Path = new File("C:\\Excel_File\\Round_Trip.xls");	
-		
-		
-		//Code to read from existing workbook
-				FileInputStream fs = new FileInputStream(File_Path);
-				wb = Workbook.getWorkbook(fs);
-				Sheet sh = wb.getSheet(0);
+	
 
 					
 					
@@ -94,26 +84,11 @@ public class Car_Booking {
 			//	String Last_Name = sh.getCell(25,1).getContents();
 			//	String Email_ID = sh.getCell(23,1).getContents();
 		
-				//Code to write in existing workbook
 		
-				//Workbook existingBook = Workbook.getWorkbook(File_Path);
 				
-				if (New_File_Path.exists()) {
-			        
-			        New_File_Path.delete();
-			          
-			        }
-			       
-			    book = Workbook.createWorkbook(New_File_Path, wb);
-				WritableSheet sheet = book.getSheet("Sheet1");
-				
-				Workbook existingBook1 = Workbook.getWorkbook(File_Path1);
-				book1 = Workbook.createWorkbook(File_Path1, existingBook1);
-				WritableSheet sheet1 = book1.getSheet("Sheet1");
-		
-				sheet.addCell(new Label(2, 0, "Car Estimate Price"));
-				sheet.addCell(new Label(3, 0, "Payable Now"));
-				sheet.addCell(new Label(4, 0, "Status"));
+				excel_sheet[0].addCell(new Label(2, 0, "Car Estimate Price"));
+				excel_sheet[0].addCell(new Label(3, 0, "Payable Now"));
+				excel_sheet[0].addCell(new Label(4, 0, "Status"));
 				
 				
 RT.Car_Search(start);
@@ -135,32 +110,39 @@ Car_Price_Variable Car_Price_Var = RT.Car_Pricing();
 						
 		
 						
-				sheet.addCell(new Label(2, 1, Car_Price_Var.getEstimate_Price()));
-				sheet.addCell(new Label(3, 1, Car_Price_Var.getPayable_Now_Price()));
-				sheet1.addCell(new Label(2, 4, Car_Price_Var.getEstimate_Price()));
+				excel_sheet[0].addCell(new Label(2, 1, Car_Price_Var.getEstimate_Price()));
+				excel_sheet[0].addCell(new Label(3, 1, Car_Price_Var.getPayable_Now_Price()));
+				excel_sheet[1].addCell(new Label(2, 4, Car_Price_Var.getEstimate_Price()));
 				
 	
 		
 					//	RT.Promo_Code();
 					RT.Car_Travel();
 					RT.Payment_Page();
+					Post_Conf_Variables Post_Conf_Var = RT.Booking_Conf();
+					excel_sheet[0].addCell(new Label(4, 1, Post_Conf_Var.getBooking_No()));
+					excel_sheet[1].addCell(new Label(1, 4, Post_Conf_Var.getBooking_No()));
 					
+					Car_Post_Price_Variable Car_Post_Price_Var = RT.Car_Post_Price();
+					excel_sheet[0].addCell(new Label(2, 2, Car_Post_Price_Var.getPost_Estimated_Price()));
+					excel_sheet[0].addCell(new Label(3, 2, Car_Post_Price_Var.getPost_Paid_Price()));
 		
-/*if((Post_Traveler_Var.getTraveler_Name_Post_Booking()).equals(First_Name + " " + "M" + " " + Last_Name))
+					
+if(Car_Post_Price_Var.getPost_Estimated_Price().equals(Car_Price_Var.getEstimate_Price()) && Car_Post_Price_Var.getPost_Paid_Price().equals(Car_Price_Var.getPayable_Now_Price()))
 			
 		{
 		System.out.println("Pass");
-		sheet.addCell(new Label(10, 1, "Pass"));
-		sheet1.addCell(new Label(4, 5, "Pass"));
+		excel_sheet[0].addCell(new Label(4, 1, "Pass"));
+		excel_sheet[1].addCell(new Label(4, 4, "Pass"));
 		}
 		
 		else
 		{
 			System.out.println("Fail");
-			sheet.addCell(new Label(10, 1, "Fail"));
-			sheet1.addCell(new Label(4, 5, "Fail"));
+			excel_sheet[0].addCell(new Label(4, 1, "Fail"));
+			excel_sheet[1].addCell(new Label(4, 4, "Fail"));
 		}
-	*/
+	
 
 		
 		System.out.println(Car_Price_Var.getEstimate_Price());
@@ -169,33 +151,21 @@ Car_Price_Variable Car_Price_Var = RT.Car_Pricing();
 			
 	
 				
-		//RT.Back_Three_Navigation();	
-		//RT.Comman_Back_Function();
+		RT.Back_Two_Navigation();	
+		RT.Comman_Back_Function();
+		
 	}
 	
-	
-	@AfterClass
-	public void Instance_Close() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
+	@AfterClass	
+	public void Close_Instance () throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 		
-	//	RT.Driver_Close();
-		
-	if (book!=null)
+		System.out.println("instance close");
+		try
 		{
-		System.out.println("out of excel varibales from RP");
+			System.out.println("instance close1");
+		WR.Instance_Close();
+		}catch(Exception e){}
 		
-		
-		book.write();
-		book.close();
-		
-
-		book1.write();
-		book1.close();
-		
-		wb.close();
-			
-		}
-	
-	
-	}	
+	}
 	
 }

@@ -4,10 +4,10 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="432.422">
+           time="349.413">
   <properties />
   
   
-            <testcase name="Round_Trip_Script" time="432.422" classname="com.fp.core.cheapoair.Round_Trip" />
+            <testcase name="Round_Trip_Script" time="349.413" classname="com.fp.core.cheapoair.Round_Trip" />
       
 </testsuite>

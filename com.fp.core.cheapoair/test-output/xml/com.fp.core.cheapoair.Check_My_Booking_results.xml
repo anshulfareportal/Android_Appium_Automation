@@ -4,10 +4,10 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="123.898">
+           time="74.960">
   <properties />
   
   
-            <testcase name="Check_Booking" time="123.898" classname="com.fp.core.cheapoair.Check_My_Booking" />
+            <testcase name="Check_Booking" time="74.960" classname="com.fp.core.cheapoair.Check_My_Booking" />
       
 </testsuite>

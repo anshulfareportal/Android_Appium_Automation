@@ -53,47 +53,20 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 @Test
 public class Total_Price_Check {
-	WritableWorkbook book;
-	WritableWorkbook book1;
-	Workbook wb;
+	
 	Function_File RT = Function_File.getInstance();
 	//Function_File RT = new Function_File();
-	
+	WebDriver dr = Function_File.WebDriver_Instance();
+	//WebDriver dr = RT.WebDriver_Instance();
+	Read_Write_Excel WR = new Read_Write_Excel();
 
 	/**
 	 * @param args
 	 */
 	public void Total_Price_Script() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 		
-	//common line for read and write in exisiting workbook
-		File File_Path = new File("C:\\Excel_File\\Test_Data.xls");	
-		File File_Path1 = new File("C:\\Excel_File\\Daily_Sanity_Report_Android.xls");
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		File New_File_Path = new File("C:\\Excel_File\\Results\\Total_Price_Check" + timeStamp + ".xls");	
-		
-		//Code to read from existing workbook
-				FileInputStream fs = new FileInputStream(File_Path);
-				wb = Workbook.getWorkbook(fs);
-				Sheet sh = wb.getSheet(0);
-
-								
-					
-				String start = sh.getCell(0,1).getContents();
-				System.out.println(start);
-
-				
-				String destination = sh.getCell(1,1).getContents();
-				System.out.println(destination);
-		
-				//Code to write in existing workbook
-		
-				//Workbook existingBook = Workbook.getWorkbook(File_Path);
-				book = Workbook.createWorkbook(New_File_Path, wb);
-				WritableSheet sheet = book.getSheet("Sheet1");
-				
-				Workbook existingBook1 = Workbook.getWorkbook(File_Path1);
-				book1 = Workbook.createWorkbook(File_Path1, existingBook1);
-				WritableSheet sheet1 = book1.getSheet("Sheet1");
+		WritableSheet excel_sheet[] = WR.Write_Excel_File("Total_Price_check");
+		Sheet sh = WR. Read_Excel_File();
 		
 				String First_Name = sh.getCell(24,2).getContents();
 				String Last_Name = sh.getCell(25,2).getContents();
@@ -130,9 +103,9 @@ public class Total_Price_Check {
 						System.out.println(l5); */
 						
 						
-				sheet.addCell(new Label(2, 1, var.getBase_Price()));
-				sheet.addCell(new Label(3, 1, var.getTaxes()));
-				sheet.addCell(new Label(4, 1, var.getSub_Total()));
+				excel_sheet[0].addCell(new Label(2, 1, var.getBase_Price()));
+				excel_sheet[0].addCell(new Label(3, 1, var.getTaxes()));
+				excel_sheet[0].addCell(new Label(4, 1, var.getSub_Total()));
 				
 				
 				String k = var.getInstant_Discount();
@@ -140,7 +113,7 @@ public class Total_Price_Check {
 				float Ins_Discount = 0;
 				if (k != null)
 				{
-					sheet.addCell(new Label(5, 1, var.getInstant_Discount()));
+					excel_sheet[0].addCell(new Label(5, 1, var.getInstant_Discount()));
 					
 					System.out.println("enter in instant discout value");
 					
@@ -154,7 +127,7 @@ public class Total_Price_Check {
 				}		
 				
 							
-				sheet.addCell(new Label(6, 1, var.getTotal_Price()));
+				excel_sheet[0].addCell(new Label(6, 1, var.getTotal_Price()));
 				
 				
 					int L_no = var.getBase_Price().length();
@@ -187,64 +160,89 @@ public class Total_Price_Check {
 			
 				
 				//float BP = tpa.floatRoundOff(Float.parseFloat(prc.getBase_Price()));
-				if((BP + Tax == Sub_Tot) &&  (Sub_Tot - Ins_Discount) == (Total_Value))
 				
+				if((BP + Tax == Sub_Tot) && (Sub_Tot - Ins_Discount) == (Total_Value))
+					
 				{
 				System.out.println("Pass");
-				sheet.addCell(new Label(7, 1, "Pass"));
-				sheet1.addCell(new Label(4, 9, "Pass"));
+				excel_sheet[0].addCell(new Label(7, 1, "Pass"));
+				excel_sheet[1].addCell(new Label(4, 9, "Pass"));
 				}
 				
 				else
 				{
 					System.out.println("Fail");
-					sheet.addCell(new Label(7, 1, "Fail"));
-					sheet1.addCell(new Label(4, 9, "Fail"));
+					excel_sheet[0].addCell(new Label(7, 1, "Fail"));
+					excel_sheet[1].addCell(new Label(4, 9, "Fail"));
 				}
+				
+			/*	if((BP + Tax == Sub_Tot))
+				
+				{
+				System.out.println("Pass");
+				excel_sheet[0].addCell(new Label(7, 1, "Pass"));
+				excel_sheet[1].addCell(new Label(4, 9, "Pass"));
+				}
+				
+				else
+				{
+					System.out.println("Fail");
+					excel_sheet[0].addCell(new Label(7, 1, "Fail"));
+					excel_sheet[1].addCell(new Label(4, 9, "Fail"));
+				}
+				
+				if((Sub_Tot - Ins_Discount) == (Total_Value))
+					
+				{
+				System.out.println("Pass");
+				excel_sheet[0].addCell(new Label(7, 1, "Pass"));
+				excel_sheet[1].addCell(new Label(4, 9, "Pass"));
+				}
+				
+				else
+				{
+					System.out.println("Fail");
+					excel_sheet[0].addCell(new Label(7, 1, "Fail"));
+					excel_sheet[1].addCell(new Label(4, 9, "Fail"));
+				}*/
 	
 				var = RT.Travel_Assist_Values();
-				sheet.addCell(new Label(8, 1, var.getTravel_Assist_Text()));
-				sheet.addCell(new Label(9, 1, var.getTravel_Assist_Value()));
-				sheet.addCell(new Label(10, 1, var.getTravel_Assist_Sub_Value()));
+				excel_sheet[0].addCell(new Label(8, 1, var.getTravel_Assist_Text()));
+				excel_sheet[0].addCell(new Label(9, 1, var.getTravel_Assist_Value()));
+				excel_sheet[0].addCell(new Label(10, 1, var.getTravel_Assist_Sub_Value()));
 				
 				
 				if(var.getTravel_Assist_Text().equals("$14.95") && var.getTravel_Assist_Value().equals(var.getTravel_Assist_Sub_Value()) && var.getTravel_Assist_Value().equals("$14.95"))
 					
 				{
 				System.out.println("Pass");
-				sheet.addCell(new Label(11, 1, "Pass"));
-				sheet1.addCell(new Label(4, 10, "Pass"));
+				excel_sheet[0].addCell(new Label(11, 1, "Pass"));
+				excel_sheet[1].addCell(new Label(4, 10, "Pass"));
 				}
 				
 				else
 				{
 					System.out.println("Fail");
-					sheet.addCell(new Label(11, 1, "Fail"));
-					sheet1.addCell(new Label(4, 10, "Fail"));
+					excel_sheet[0].addCell(new Label(11, 1, "Fail"));
+					excel_sheet[1].addCell(new Label(4, 10, "Fail"));
 				}
 				
 				RT.Back_Four_Navigation();
 			RT.Comman_Back_Function();
+			
+
+	}
+	@AfterClass	
+	public void Close_Instance () throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
+		
+		System.out.println("instance close");
+		try
+		{
+			System.out.println("instance close1");
+		WR.Instance_Close();
+		}catch(Exception e){}
+		
 	}
 	
-	@AfterClass
-	public void Instance_Close() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
-		
-	if (book!=null)
-		{
-		System.out.println("Out of TP");
-		
-		book.write();
-		book.close();
-		
 
-		book1.write();
-		book1.close();
-		wb.close();
-			
-		}
-	
-	
-	}	
-	
 }

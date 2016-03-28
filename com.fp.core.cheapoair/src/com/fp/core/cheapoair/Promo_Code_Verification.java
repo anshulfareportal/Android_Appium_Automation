@@ -53,11 +53,12 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 @Test
 public class Promo_Code_Verification {
-	WritableWorkbook book;
-	WritableWorkbook book1;
-	Workbook wb;
+	
 	Function_File RT = Function_File.getInstance();
 	//Function_File RT = new Function_File();
+	WebDriver dr = Function_File.WebDriver_Instance();
+	//WebDriver dr = RT.WebDriver_Instance();
+	Read_Write_Excel WR = new Read_Write_Excel();
 	
 
 	/**
@@ -65,16 +66,8 @@ public class Promo_Code_Verification {
 	 */
 	public void Promo_Code_Verify() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 		
-	//common line for read and write in exisiting workbook
-		File File_Path = new File("C:\\Excel_File\\Test_Data.xls");	
-		File File_Path1 = new File("C:\\Excel_File\\Daily_Sanity_Report_Android.xls");
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		File New_File_Path = new File("C:\\Excel_File\\Results\\Promo_Code" + timeStamp + ".xls");	
-		
-		//Code to read from existing workbook
-				FileInputStream fs = new FileInputStream(File_Path);
-				wb = Workbook.getWorkbook(fs);
-				Sheet sh = wb.getSheet(0);
+		WritableSheet excel_sheet[] = WR.Write_Excel_File("Promo_Code");
+		Sheet sh = WR. Read_Excel_File();
 
 								
 					
@@ -85,15 +78,7 @@ public class Promo_Code_Verification {
 				String destination = sh.getCell(1,1).getContents();
 				System.out.println(destination);
 		
-				//Code to write in existing workbook
 		
-				//Workbook existingBook = Workbook.getWorkbook(File_Path);
-				book = Workbook.createWorkbook(New_File_Path, wb);
-				WritableSheet sheet = book.getSheet("Sheet1");
-				
-				Workbook existingBook1 = Workbook.getWorkbook(File_Path1);
-				book1 = Workbook.createWorkbook(File_Path1, existingBook1);
-				WritableSheet sheet1 = book1.getSheet("Sheet1");
 		
 				String First_Name = sh.getCell(24,2).getContents();
 				String Last_Name = sh.getCell(25,2).getContents();
@@ -137,7 +122,7 @@ public class Promo_Code_Verification {
 				float Ins_Discount = 0;
 				if (k != null)
 				{
-					sheet.addCell(new Label(2, 1, var.getInstant_Discount()));
+					excel_sheet[0].addCell(new Label(2, 1, var.getInstant_Discount()));
 					
 					System.out.println("enter in instant discout value");
 					
@@ -151,7 +136,7 @@ public class Promo_Code_Verification {
 				}		
 				
 							
-				sheet.addCell(new Label(3, 1, var.getTotal_Price()));
+				excel_sheet[0].addCell(new Label(3, 1, var.getTotal_Price()));
 				
 								
 				 int L_no4 = var.getTotal_Price().length();
@@ -175,7 +160,7 @@ public class Promo_Code_Verification {
 				float Ins_Discount1 = 0;
 				if (k != null)
 				{
-					sheet.addCell(new Label(4, 1, var.getInstant_Discount()));
+					excel_sheet[0].addCell(new Label(4, 1, var.getInstant_Discount()));
 					
 					System.out.println("enter in instant discout value");
 					
@@ -189,7 +174,7 @@ public class Promo_Code_Verification {
 				}		
 				
 							
-				sheet.addCell(new Label(5, 1, var.getTotal_Price()));
+				excel_sheet[0].addCell(new Label(5, 1, var.getTotal_Price()));
 				
 								
 				 int L_no2 = var.getTotal_Price().length();
@@ -209,15 +194,15 @@ public class Promo_Code_Verification {
 				
 				{
 				System.out.println("Pass");
-				sheet.addCell(new Label(6, 1, "Pass"));
-				sheet1.addCell(new Label(4, 12, "Pass"));
+				excel_sheet[0].addCell(new Label(6, 1, "Pass"));
+				excel_sheet[1].addCell(new Label(4, 12, "Pass"));
 				}
 				
 				else
 				{
 					System.out.println("Fail");
-					sheet.addCell(new Label(6, 1, "Fail"));
-					sheet1.addCell(new Label(4, 12, "Fail"));
+					excel_sheet[0].addCell(new Label(6, 1, "Fail"));
+					excel_sheet[1].addCell(new Label(4, 12, "Fail"));
 					
 					
 				}
@@ -225,26 +210,19 @@ public class Promo_Code_Verification {
 				
 				RT.Back_Four_Navigation();
 			RT.Comman_Back_Function();
+			 
 	}
 	
-	@AfterClass
-	public void Instance_Close() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
+	@AfterClass	
+	public void Close_Instance () throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 		
-	if (book!=null)
+		System.out.println("instance close");
+		try
 		{
-		System.out.println("Out of TP");
+			System.out.println("instance close1");
+		WR.Instance_Close();
+		}catch(Exception e){}
 		
-		book.write();
-		book.close();
-		
-
-		book1.write();
-		book1.close();
-		wb.close();
-			
-		}
-	
-	
-	}	
+	}
 	
 }

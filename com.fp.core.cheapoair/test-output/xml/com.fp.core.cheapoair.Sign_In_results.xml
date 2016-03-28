@@ -4,10 +4,10 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="44.060">
+           time="34.761">
   <properties />
   
   
-            <testcase name="Login" time="44.060" classname="com.fp.core.cheapoair.Sign_In" />
+            <testcase name="Login" time="34.761" classname="com.fp.core.cheapoair.Sign_In" />
       
 </testsuite>

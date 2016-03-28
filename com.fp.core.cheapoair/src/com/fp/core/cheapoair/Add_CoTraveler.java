@@ -56,82 +56,57 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 @Test
 public class Add_CoTraveler{
-	WritableWorkbook book;
-	WritableWorkbook book1;
-	Workbook wb;
+	
 	Function_File RT = Function_File.getInstance();
 	//Function_File RT = new Function_File();
-	//float Ins_Discount;
+	WebDriver dr = Function_File.WebDriver_Instance();
+	//WebDriver dr = RT.WebDriver_Instance();
+	Read_Write_Excel WR = new Read_Write_Excel();
 	
 	/**
 	 * @param args
 	 */
 	public void Login() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
-		
-	//common line for read and write in exisiting workbook
-		File File_Path = new File("C:\\Excel_File\\Test_Data.xls");	
-		File File_Path1 = new File("C:\\Excel_File\\Daily_Sanity_Report_Android.xls");
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		File New_File_Path = new File("C:\\Excel_File\\Results\\Add_Co_Travelers" + timeStamp + ".xls");	
-		
-		//Code to read from existing workbook
-				FileInputStream fs = new FileInputStream(File_Path);
-				wb = Workbook.getWorkbook(fs);
-				Sheet sh = wb.getSheet(0);
-		
-				//Code to write in existing workbook
-		
-				//Workbook existingBook = Workbook.getWorkbook(File_Path);
-				book = Workbook.createWorkbook(New_File_Path, wb);
-				WritableSheet sheet = book.getSheet("Sheet1");
-				
-				Workbook existingBook1 = Workbook.getWorkbook(File_Path1);
-				book1 = Workbook.createWorkbook(File_Path1, existingBook1);
-				WritableSheet sheet1 = book1.getSheet("Sheet1");
-		
+		WritableSheet excel_sheet[] = WR.Write_Excel_File("Add Co_Travelers");
+		Sheet sh = WR. Read_Excel_File();
+
+	
 		//RT.testapp();
 		RT.Menu_Navigation();
 		Sign_In_Variables Sign_In_Var =  RT.Sign_In_Page();
 		Sign_In_Var = RT.Add_Co_Travler();
 		System.out.println(Sign_In_Var.getAdd_Co_Traveler_Message());
-		sheet.addCell(new Label(2, 1, Sign_In_Var.getAdd_Co_Traveler_Message())); 
-		sheet.addCell(new Label(3, 1, String.valueOf(Sign_In_Var.getTraveler_Count_Before_Creation())));
-		sheet.addCell(new Label(4, 1, String.valueOf(Sign_In_Var.getTraveler_Count_After_Creation())));
+		excel_sheet[0].addCell(new Label(2, 1, Sign_In_Var.getAdd_Co_Traveler_Message())); 
+		excel_sheet[0].addCell(new Label(3, 1, String.valueOf(Sign_In_Var.getTraveler_Count_Before_Creation())));
+		excel_sheet[0].addCell(new Label(4, 1, String.valueOf(Sign_In_Var.getTraveler_Count_After_Creation())));
 	  
 		if((Sign_In_Var.getAdd_Co_Traveler_Message().equals("Your co-traveler details have been saved.")) && (Sign_In_Var.getTraveler_Count_After_Creation() == (Sign_In_Var.getTraveler_Count_Before_Creation() +1)))
 		 {
-			 sheet.addCell(new Label(5, 1, "Pass")); 
-			 sheet1.addCell(new Label(4, 13, "Pass"));                                                                                     
+			 excel_sheet[0].addCell(new Label(5, 1, "Pass")); 
+			 excel_sheet[1].addCell(new Label(4, 13, "Pass"));                                                                                     
 		 }
 		 
 		 else
 		 {
-			 sheet.addCell(new Label(5, 1, "Fail")); 
-			 sheet1.addCell(new Label(4, 13, "Fail")); 
+			 excel_sheet[0].addCell(new Label(5, 1, "Fail")); 
+			 excel_sheet[1].addCell(new Label(4, 13, "Fail")); 
 		 }
 		 
 		System.out.println("where it is ");
-		 RT.Back_One_Navigation();
+		 RT.Back_Two_Navigation();
+		
 	}
 	
-	@AfterClass
-	public void Instance_Close() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
+	@AfterClass	
+	public void Close_Instance () throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 		
-	if (book!=null)
+		System.out.println("instance close");
+		try
 		{
-		System.out.println("out of Add CoTravelers varibales");
+			System.out.println("instance close1");
+		WR.Instance_Close();
+		}catch(Exception e){}
 		
-		book.write();
-		book.close();
-		
-
-		book1.write();
-		book1.close();
-		wb.close();
-			
-		}
-	
-	
-	}	
+	}
 	
 }

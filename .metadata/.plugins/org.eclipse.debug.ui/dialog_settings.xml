@@ -17,7 +17,7 @@
 	</section>
 	<section name="org.eclipse.debug.ui.LAUNCH_CONFIGURATIONS_DIALOG_SECTION">
 		<item value="830" key="DIALOG_WIDTH"/>
-		<item value=", com.android.ide.eclipse.adt.junit.launchConfigurationType, org.testng.eclipse.launchconfig, org.eclipse.m2e.Maven2LaunchConfigurationType, " key="org.eclipse.debug.ui.EXPANDED_NODES"/>
+		<item value=", org.eclipse.m2e.Maven2LaunchConfigurationType, " key="org.eclipse.debug.ui.EXPANDED_NODES"/>
 		<item value="665" key="DIALOG_HEIGHT"/>
 		<item value="280" key="org.eclipse.debug.ui.DIALOG_SASH_WEIGHTS_1"/>
 		<item value="719" key="org.eclipse.debug.ui.DIALOG_SASH_WEIGHTS_2"/>

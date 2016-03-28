@@ -3,12 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.fp.core.cheapoair.Car_Booking">
+      <class name="com.fp.core.cheapoair.Delete_CoTraveler">
         <methods>
-          <include name="Car_Script"/>
-          <include name="Instance_Close"/>
+          <include name="Del_Cotraveler"/>
+          <include name="Close_Instance"/>
         </methods>
-      </class> <!-- com.fp.core.cheapoair.Car_Booking -->
+      </class> <!-- com.fp.core.cheapoair.Delete_CoTraveler -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

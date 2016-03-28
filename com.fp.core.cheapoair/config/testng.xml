@@ -40,18 +40,17 @@
  <test name="Regression1" preserve-order="true" parallel="false"> 
     <classes>
         @Test(sequential = true)
-<!--  	<class name= "com.fp.core.cheapoair.Round_Trip"/>
-    	<class name="com.fp.core.cheapoair.One_Way"/>
-    	<class name="com.fp.core.cheapoair.Check_My_Booking"/>  
+    
         
       <class name="com.fp.core.cheapoair.Total_Price_Check"/>  
       
        <class name="com.fp.core.cheapoair.Android_Feedback"/>
         <class name="com.fp.core.cheapoair.Sign_In"/>   
-         <class name="com.fp.core.cheapoair.Promo_Code_Verification"/>-->
+         <class name="com.fp.core.cheapoair.Promo_Code_Verification"/>
        <class name="com.fp.core.cheapoair.Add_CoTraveler"/>
       <class name="com.fp.core.cheapoair.Delete_CoTraveler"/>
   
+      
          </classes>
   </test>
 

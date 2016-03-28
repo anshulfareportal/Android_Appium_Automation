@@ -53,12 +53,12 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 @Test
 public class One_Way {
-	WritableWorkbook book;
-	WritableWorkbook book1;
-	Workbook wb;
-	
+
 	Function_File RT = Function_File.getInstance();
 	//Function_File RT = new Function_File();
+	WebDriver dr = Function_File.WebDriver_Instance();
+	//WebDriver dr = RT.WebDriver_Instance();
+	Read_Write_Excel WR = new Read_Write_Excel();
 		/**
 	 * @param args
 	 */
@@ -66,17 +66,9 @@ public class One_Way {
 	public void One_Way_Script() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 		
 	//common line for read and write in exisiting workbook
-		System.out.println("executing one way");
-		File File_Path = new File("C:\\Excel_File\\Test_Data.xls");	
-		File File_Path1 = new File("C:\\Excel_File\\Daily_Sanity_Report_Android.xls");
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		File New_File_Path = new File("C:\\Excel_File\\Results\\One_Way" + timeStamp + ".xls");	
+		WritableSheet excel_sheet[] = WR.Write_Excel_File("One_Way");
+		Sheet sh = WR. Read_Excel_File();
 		
-		//Code to read from existing workbook
-				FileInputStream fs = new FileInputStream(File_Path);
-				wb = Workbook.getWorkbook(fs);
-				Sheet sh = wb.getSheet(0);
-
 								
 					
 				String start = sh.getCell(0,1).getContents();
@@ -90,18 +82,7 @@ public class One_Way {
 				String Last_Name = sh.getCell(25,2).getContents();
 				String Email_ID = sh.getCell(23,2).getContents();
 				
-				//Code to write in existing workbook
-		
-				//Workbook existingBook = Workbook.getWorkbook(File_Path);
-				book = Workbook.createWorkbook(New_File_Path, wb);
-				WritableSheet sheet = book.getSheet("Sheet1");
-				
-				Workbook existingBook1 = Workbook.getWorkbook(File_Path1);
-				book1 = Workbook.createWorkbook(File_Path1, existingBook1);
-				WritableSheet sheet1 = book1.getSheet("Sheet1");
-		
 					
-				
 				System.out.println("executing one way1");
 	//	RT.testapp();
 		RT.Home_Page_Flight();
@@ -132,27 +113,27 @@ public class One_Way {
 						System.out.println(l5); */
 						
 						
-				sheet.addCell(new Label(2, 1, Price_Var.getBase_Price()));
-				sheet.addCell(new Label(3, 1, Price_Var.getTaxes()));
-				sheet.addCell(new Label(4, 1, Price_Var.getSub_Total()));
+				excel_sheet[0].addCell(new Label(2, 1, Price_Var.getBase_Price()));
+				excel_sheet[0].addCell(new Label(3, 1, Price_Var.getTaxes()));
+				excel_sheet[0].addCell(new Label(4, 1, Price_Var.getSub_Total()));
 				
 				
 				String k = Price_Var.getInstant_Discount();
 				System.out.println(k);
 				if (k != null)
 				{
-					sheet.addCell(new Label(5, 1, Price_Var.getInstant_Discount()));
+					excel_sheet[0].addCell(new Label(5, 1, Price_Var.getInstant_Discount()));
 					System.out.println("enter in instant discout value");
 				}		
 				
 							
-				sheet.addCell(new Label(6, 1, Price_Var.getTotal_Price()));
-				sheet1.addCell(new Label(2, 3, Price_Var.getTotal_Price()));
+				excel_sheet[0].addCell(new Label(6, 1, Price_Var.getTotal_Price()));
+				excel_sheet[1].addCell(new Label(2, 3, Price_Var.getTotal_Price()));
 				
 				System.out.println(Price_Var.getTotal_Price());
 		
 	//	Label l1 = new Label(1, 1, "hgdfhgdfhdfdhdhdfgerhdfhdhdfhdfdfhdfhdhd");
-		//sheet.addCell(l1);
+		//excel_sheet[0].addCell(l1);
 	
 		
 					//	RT.Promo_Code();
@@ -160,17 +141,17 @@ public class One_Way {
 					RT.Payment_Page();
 					Post_Conf_Variables Post_Conf_Var = RT.Booking_Conf();
 					Post_Conf_Var = RT.Booking_Conf();
-					sheet.addCell(new Label(7, 1, Post_Conf_Var.getBooking_No()));
-					sheet1.addCell(new Label(1, 3, Post_Conf_Var.getBooking_No()));
+					excel_sheet[0].addCell(new Label(7, 1, Post_Conf_Var.getBooking_No()));
+					excel_sheet[1].addCell(new Label(1, 3, Post_Conf_Var.getBooking_No()));
 					
 					RT.Navigation_From_Book_Conf_To_Price();
 					Post_Price_Variables Post_Price_Var = RT.Post_Price_Page();
 					
-					sheet.addCell(new Label(2, 2, Post_Price_Var.getPost_Base_Price()));
-					sheet.addCell(new Label(3, 2, Post_Price_Var.getPost_Taxes()));
-					sheet.addCell(new Label(4, 2, Post_Price_Var.getPost_Sub_Total()));
-					sheet.addCell(new Label(5, 2, Post_Price_Var.getPost_Instant_Discount()));
-					sheet.addCell(new Label(6, 2, Post_Price_Var.getPost_Total_Price()));
+					excel_sheet[0].addCell(new Label(2, 2, Post_Price_Var.getPost_Base_Price()));
+					excel_sheet[0].addCell(new Label(3, 2, Post_Price_Var.getPost_Taxes()));
+					excel_sheet[0].addCell(new Label(4, 2, Post_Price_Var.getPost_Sub_Total()));
+					excel_sheet[0].addCell(new Label(5, 2, Post_Price_Var.getPost_Instant_Discount()));
+					excel_sheet[0].addCell(new Label(6, 2, Post_Price_Var.getPost_Total_Price()));
 					
 					System.out.println(Post_Price_Var.getPost_Base_Price());
 					System.out.println(Post_Price_Var.getPost_Taxes());
@@ -185,15 +166,15 @@ public class One_Way {
 							if(Price_Var.getBase_Price().equals(Post_Price_Var.getPost_Base_Price()) && Price_Var.getTaxes().equals(Post_Price_Var.getPost_Taxes()) && Price_Var.getSub_Total().equals(Post_Price_Var.getPost_Sub_Total()) && Price_Var.getInstant_Discount().equals(Post_Price_Var.getPost_Instant_Discount()) && Price_Var.getTotal_Price().equals(Post_Price_Var.getPost_Total_Price()))
 							{System.out.println("enter in 2nd if");
 								System.out.println("Pass");
-								sheet.addCell(new Label(8, 1, "Pass"));
-								sheet1.addCell(new Label(4, 3, "Pass"));
+								excel_sheet[0].addCell(new Label(8, 1, "Pass"));
+								excel_sheet[1].addCell(new Label(4, 3, "Pass"));
 							}
 							
 							else
 							{System.out.println("enter in 2nd else");
 								System.out.println("Fail");
-								sheet.addCell(new Label(8, 1, "Fail"));
-								sheet1.addCell(new Label(4, 3, "Fail"));
+								excel_sheet[0].addCell(new Label(8, 1, "Fail"));
+								excel_sheet[1].addCell(new Label(4, 3, "Fail"));
 							}
 							
 					}	
@@ -204,48 +185,35 @@ public class One_Way {
 							if(Price_Var.getBase_Price().equals(Post_Price_Var.getPost_Base_Price()) && Price_Var.getTaxes().equals(Post_Price_Var.getPost_Taxes()) && Price_Var.getSub_Total().equals(Post_Price_Var.getPost_Sub_Total()) && Price_Var.getTotal_Price().equals(Post_Price_Var.getPost_Total_Price()))
 							{System.out.println("enter in 3rd if");
 								System.out.println("Pass");
-								sheet.addCell(new Label(8, 1, "Pass"));
-								sheet1.addCell(new Label(4, 3, "Pass"));
+								excel_sheet[0].addCell(new Label(8, 1, "Pass"));
+								excel_sheet[1].addCell(new Label(4, 3, "Pass"));
 							}
 							
 							else
 								
 							{System.out.println("enter in 3rd else");
 								System.out.println("Fail");
-								sheet.addCell(new Label(8, 1, "Fail"));
-								sheet1.addCell(new Label(4, 3, "Fail"));
+								excel_sheet[0].addCell(new Label(8, 1, "Fail"));
+								excel_sheet[1].addCell(new Label(4, 3, "Fail"));
 							}
 							
 						}	
 					RT.Back_Three_Navigation();	
+					
 	}
 	
 	
-	
-	
-	
-	
-	@AfterClass
-	public void Instance_Close() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
+	@AfterClass	
+	public void Close_Instance () throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 		
-		//RT.Driver_Close();
-	if (book!=null)
+		System.out.println("instance close");
+		try
 		{
-		System.out.println("out of excel varibales from OW");
+			System.out.println("instance close1");
+		WR.Instance_Close();
+		}catch(Exception e){}
 		
-		
-		book.write();
-		book.close();
-		
-
-		book1.write();
-		book1.close();
-		
-		wb.close();
-			
-		}
+	}
 	
-	
-	}	
 	
 }

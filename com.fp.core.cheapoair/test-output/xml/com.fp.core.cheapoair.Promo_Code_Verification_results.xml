@@ -4,10 +4,10 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="106.116">
+           time="98.767">
   <properties />
   
   
-            <testcase name="Promo_Code_Verify" time="106.116" classname="com.fp.core.cheapoair.Promo_Code_Verification" />
+            <testcase name="Promo_Code_Verify" time="98.767" classname="com.fp.core.cheapoair.Promo_Code_Verification" />
       
 </testsuite>

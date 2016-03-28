@@ -53,11 +53,11 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 @Test
 public class Android_Feedback{
-	WritableWorkbook book;
-	WritableWorkbook book1;
-	Workbook wb;
 	Function_File RT = Function_File.getInstance();
 	//Function_File RT = new Function_File();
+	WebDriver dr = Function_File.WebDriver_Instance();
+	//WebDriver dr = RT.WebDriver_Instance();
+	Read_Write_Excel WR = new Read_Write_Excel();
 	//float Ins_Discount;
 	
 
@@ -67,42 +67,24 @@ public class Android_Feedback{
 	public void Android_Feedback_Script() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 		
 	//common line for read and write in exisiting workbook
-		File File_Path = new File("C:\\Excel_File\\Test_Data.xls");	
-		File File_Path1 = new File("C:\\Excel_File\\Daily_Sanity_Report_Android.xls");
-		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-		File New_File_Path = new File("C:\\Excel_File\\Results\\Android_Feedback" + timeStamp + ".xls");	
-		
-		//Code to read from existing workbook
-				FileInputStream fs = new FileInputStream(File_Path);
-				wb = Workbook.getWorkbook(fs);
-				Sheet sh = wb.getSheet(0);
-		
-				//Code to write in existing workbook
-		
-				//Workbook existingBook = Workbook.getWorkbook(File_Path);
-				book = Workbook.createWorkbook(New_File_Path, wb);
-				WritableSheet sheet = book.getSheet("Sheet1");
-				
-				Workbook existingBook1 = Workbook.getWorkbook(File_Path1);
-				book1 = Workbook.createWorkbook(File_Path1, existingBook1);
-				WritableSheet sheet1 = book1.getSheet("Sheet1");
-		
+		WritableSheet excel_sheet[] = WR.Write_Excel_File("Android_Feedback");
+			
 		//RT.testapp();
 		RT.Menu_Navigation();
 		Feedback_Variables Feedback_Var = RT.Feedback();
-		sheet.addCell(new Label(3, 1, Feedback_Var.getFeedback_Message())); 
+		excel_sheet[0].addCell(new Label(3, 1, Feedback_Var.getFeedback_Message())); 
 		 
 		 		 
 	 if(Feedback_Var.getFeedback_Message().equals("Thanks! We received your feedback."))
 		 {
-		 sheet.addCell(new Label(3, 1, "Pass")); 	 
-		 sheet1.addCell(new Label(4, 7, "Pass")); 
+		 excel_sheet[0].addCell(new Label(3, 1, "Pass")); 	 
+		 excel_sheet[1].addCell(new Label(4, 7, "Pass")); 
 		}
 		 
 		 else
 		 {
-			 sheet.addCell(new Label(3, 1, "Pass")); 
-			 sheet1.addCell(new Label(4, 7, "Pass")); 
+			 excel_sheet[0].addCell(new Label(3, 1, "Pass")); 
+			 excel_sheet[1].addCell(new Label(4, 7, "Pass")); 
 		 }
 		 
 		 
@@ -110,24 +92,16 @@ public class Android_Feedback{
 
 	}
 	
-	@AfterClass
-	public void Instance_Close() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
+	@AfterClass	
+	public void Close_Instance () throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 		
-	if (book!=null)
+		System.out.println("instance close");
+		try
 		{
-		System.out.println("out of feedback");
+			System.out.println("instance close1");
+		WR.Instance_Close();
+		}catch(Exception e){}
 		
-		book.write();
-		book.close();
-		
-
-		book1.write();
-		book1.close();
-		wb.close();
-			
-		}
-	
-	
-	}	
+	}
 	
 }

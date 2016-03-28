@@ -4,10 +4,10 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="184.454">
+           time="129.206">
   <properties />
   
   
-            <testcase name="Total_Price_Script" time="184.454" classname="com.fp.core.cheapoair.Total_Price_Check" />
+            <testcase name="Total_Price_Script" time="129.206" classname="com.fp.core.cheapoair.Total_Price_Check" />
       
 </testsuite>

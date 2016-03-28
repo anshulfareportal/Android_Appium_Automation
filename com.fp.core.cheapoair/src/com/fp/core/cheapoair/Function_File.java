@@ -12,6 +12,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -65,8 +67,8 @@ public class Function_File {
 
  //private static final String[] scrollObject = null;
 	static WebDriver dr; 
-
 	DesiredCapabilities capabilities;
+	
 	
 	private Function_File()
 	
@@ -143,7 +145,31 @@ private static Function_File test = null;
 	}
 	
 	
-	
+	public static WebDriver WebDriver_Instance()
+	{
+		if (dr== null)
+		{
+			
+			try
+			{
+				test = new Function_File();
+				test.testapp();	
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		
+		else
+		{
+			return dr;
+		}
+		
+		return dr;
+			
+		
+	}
 	@Test(priority = 1)
 	
 	public void Hide_Keyboard() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
@@ -157,6 +183,7 @@ private static Function_File test = null;
 						}
 	
 	}
+	
 	
 	public void Home_Page_Flight() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 	
@@ -218,7 +245,7 @@ public void Search_Date(String One_Way) throws MalformedURLException, Interrupte
 		 
 		dr.manage().timeouts().implicitlyWait(120,TimeUnit.SECONDS);
 		
-		dr.findElement(By.xpath("//android.support.v7.widget.RecyclerView/android.widget.FrameLayout[@index='0']/*")).click();
+		dr.findElement(By.xpath("//android.support.v7.widget.RecyclerView/android.widget.FrameLayout[@index='1']/*")).click();
 
 	
 		}
@@ -455,7 +482,7 @@ public Variable_File Travel_Assist_Values() throws MalformedURLException, Interr
 			dr.findElement(By.id("com.fp.cheapoair:id/base_custom_picker_button_label")).click();
 			dr.findElement(By.name("OK")).click();
 					
-			((AppiumDriver) dr).swipe(400, 650, 400, 100, 1000);
+
 			dr.findElement(By.id("com.fp.cheapoair:id/air_flight_payment_details_address_line_one")).sendKeys("123 main street");
 			((AppiumDriver) dr).swipe(400, 600, 400, 100, 1000);
 			dr.findElement(By.id("com.fp.cheapoair:id/air_flight_payment_details_city")).sendKeys("new york");
@@ -484,6 +511,7 @@ public Variable_File Travel_Assist_Values() throws MalformedURLException, Interr
 			((AppiumDriver) dr).swipe(400, 600, 400, 100, 1000);
 			((AppiumDriver) dr).swipe(400, 600, 400, 100, 1000);
 			((AppiumDriver) dr).swipe(400, 600, 400, 100, 1000);
+			((AppiumDriver) dr).swipe(400, 600, 400, 100, 1000);
 			//((AppiumDriver) dr).swipe(400, 600, 700, 400, 1000);
 			//System.out.println("scroll1");
 			//((AppiumDriver) dr).swipe(400, 600, 400, 100, 1000);
@@ -501,7 +529,8 @@ public Variable_File Travel_Assist_Values() throws MalformedURLException, Interr
 			Hide_Keyboard();
 			dr.findElement(By.id("com.fp.cheapoair:id/air_flight_payment_details_email_confirm_edit_text")).sendKeys("anshuljain@fareportal.com");
 			Hide_Keyboard();
-			dr.findElement(By.name("Book Now")).click();
+			dr.findElement(By.id("com.fp.cheapoair:id/base_call_to_action_label")).click();
+			//dr.findElement(By.name("Book Now")).click();
 			
 				}
 		
@@ -765,7 +794,10 @@ public Sign_In_Variables Sign_In_Page() throws MalformedURLException, Interrupte
 	
 	Sign_In_Variables Sign_In_Var = new Sign_In_Variables();
  
-  dr.findElement(By.name("Sign In")).click();
+  if(dr.findElement(By.name("Sign In")).isDisplayed())
+  {
+  
+	dr.findElement(By.name("Sign In")).click();
   dr.findElement(By.id("com.fp.cheapoair:id/editText_login_email_id")).sendKeys("anshul20@fareportal.com");
   dr.findElement(By.id("com.fp.cheapoair:id/editText_login_password")).sendKeys("test1234");
   Hide_Keyboard();
@@ -773,16 +805,18 @@ public Sign_In_Variables Sign_In_Page() throws MalformedURLException, Interrupte
    dr.findElement(By.id("com.fp.cheapoair:id/menu_screen_signed_in_arrow_down_icon")).click();
    Sign_In_Var.setSign_Out_Text(dr.findElement(By.id("com.fp.cheapoair:id/signed_menu_fragment_signout_textview")).getText());
    
-   return Sign_In_Var;
+   
+  }
+  
 
+  return Sign_In_Var;
 }
 
 public Sign_In_Variables Add_Co_Travler() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 	
 	Sign_In_Variables Sign_In_Var = new Sign_In_Variables();
- 
-  dr.findElement(By.name("My Account")).click();
-  dr.findElement(By.name("Co-Travelers")).click();
+	dr.findElement(By.name("My Account")).click();
+   dr.findElement(By.name("Co-Travelers")).click();
  
   List<WebElement> items=dr.findElements(By.xpath("//android.widget.ListView/android.widget.LinearLayout"));
   System.out.println(items.size());
@@ -828,8 +862,10 @@ public Sign_In_Variables Add_Co_Travler() throws MalformedURLException, Interrup
 public Sign_In_Variables Del_Co_Travler() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 	
 	Sign_In_Variables Sign_In_Var = new Sign_In_Variables();
+	dr.findElement(By.name("My Account")).click();
+	   dr.findElement(By.name("Co-Travelers")).click();
+	 
  
-   dr.findElement(By.name("Co-Travelers")).click();
  
   List<WebElement> items=dr.findElements(By.xpath("//android.widget.ListView/android.widget.LinearLayout"));
   System.out.println(items.size());
@@ -881,7 +917,7 @@ public Sign_In_Variables Get_Text_After_Sign_Out() throws MalformedURLException,
 }
 public void Sign_Out() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 	
-	  	  dr.findElement(By.name("Sign Out")).click();
+	    dr.findElement(By.name("Sign Out")).click();
 	  	dr.findElement(By.name("OK")).click();
 	  	
 	 
@@ -950,17 +986,23 @@ public void Car_Travel() throws MalformedURLException, InterruptedException, Bif
 	
 	dr.findElement(By.id("com.fp.cheapoair:id/car_trvl_det_detail_first_name")).sendKeys("maria");
 	dr.findElement(By.id("com.fp.cheapoair:id/car_trvl_det_detail_last_name")).sendKeys("cano");
+	Hide_Keyboard();
 	dr.findElement(By.id("com.fp.cheapoair:id/base_call_to_action_label")).click();
 	
 }
 
-public void Car_Payment() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
+public Car_Post_Price_Variable Car_Post_Price() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
 	
-	dr.findElement(By.id("com.fp.cheapoair:id/car_trvl_det_detail_first_name")).sendKeys("maria");
-	dr.findElement(By.id("com.fp.cheapoair:id/car_trvl_det_detail_last_name")).sendKeys("cano");
-	dr.findElement(By.id("com.fp.cheapoair:id/base_call_to_action_label")).click();
+	Car_Post_Price_Variable Car_Post_Price_Var = new Car_Post_Price_Variable();
 	
+	dr.findElement(By.name("Price Details")).click();
+	Car_Post_Price_Var.setPost_Estimated_Price(dr.findElement(By.id("com.fp.cheapoair:id/car_prc_tv_sub_total_amount")).getText());
+	Car_Post_Price_Var.setPost_Paid_Price(dr.findElement(By.id("com.fp.cheapoair:id/car_prc_tv_payable_amount")).getText());
+	
+	return Car_Post_Price_Var;
+
 }
+
 
 	
 		public void Driver_Close() throws MalformedURLException, InterruptedException, BiffException, IOException, Exception {
@@ -978,3 +1020,7 @@ public void Car_Payment() throws MalformedURLException, InterruptedException, Bi
 		
 	
 }
+
+
+
+

@@ -20,6 +20,6 @@
 <listAttribute key="org.testng.eclipse.SUITE_TEST_LIST">
 <listEntry value="config/testng.xml"/>
 </listAttribute>
-<intAttribute key="org.testng.eclipse.TYPE" value="3"/>
+<intAttribute key="org.testng.eclipse.TYPE" value="1"/>
 <booleanAttribute key="org.testng.eclipse.VERBOSE" value="false"/>
 </launchConfiguration>
